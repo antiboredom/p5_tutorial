@@ -1,8 +1,15 @@
 var boxes = [];
 var rotation = 0;
+var slider;
 
 function setup() {
   createGraphics(600, 600);
+
+  slider = document.getElementById("slider");
+  slider.onchange = function() {
+    rotation = map(this.value, 0, 100, 0, PI);
+  };
+
   rectMode(CENTER);
   var colSize = width / 30; //try this with 30 - 50
   for (var x = colSize; x < width; x += colSize) {
@@ -50,8 +57,3 @@ Box.prototype.run = function() {
   this.update();
   this.display();
 }
-
-var slider = document.getElementById("slider");
-slider.onchange = function(e) {
-  rotation = map(this.value, 0, 100, 0, PI);
-};
